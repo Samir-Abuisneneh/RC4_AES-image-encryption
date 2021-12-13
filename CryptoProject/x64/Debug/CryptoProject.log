@@ -1,0 +1,186 @@
+﻿  Source.cpp
+C:\Users\Samir\Desktop\CryptoProject\CryptoProject\Source.cpp(591,17): warning C4242: '=': conversion from 'int' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=CryptoPP::byte
+          ]
+C:\Users\Samir\Desktop\CryptoProject\CryptoProject\Source.cpp(664,26): warning C4244: '=': conversion from '_Tp' to 'uchar', possible loss of data
+          with
+          [
+              _Tp=float
+          ]
+C:\Users\Samir\Desktop\CryptoProject\CryptoProject\Source.cpp(665,26): warning C4244: '=': conversion from '_Tp' to 'uchar', possible loss of data
+          with
+          [
+              _Tp=float
+          ]
+C:\Users\Samir\Desktop\CryptoProject\CryptoProject\Source.cpp(666,26): warning C4244: '=': conversion from '_Tp' to 'uchar', possible loss of data
+          with
+          [
+              _Tp=float
+          ]
+C:\Users\Samir\Desktop\CryptoProject\CryptoProject\Source.cpp(703,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Samir\Desktop\CryptoProject\CryptoProject\Source.cpp(705,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Samir\Desktop\CryptoProject\CryptoProject\Source.cpp(730,58): warning C4267: 'initializing': conversion from 'size_t' to 'CryptoPP::byte', possible loss of data
+C:\Users\Samir\Desktop\CryptoProject\CryptoProject\Source.cpp(775,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+cryptlib.lib(cryptlib.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(cryptlib.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(filters.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(filters.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(allocate.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(allocate.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(rijndael.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(rijndael.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(integer.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(integer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(algparam.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(algparam.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(modes.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(modes.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(dll.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(dll.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(files.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(files.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(basecode.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(basecode.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(hex.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(hex.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(misc.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(misc.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(queue.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(queue.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(fips140.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(fips140.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(pch.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(pch.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(mqueue.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(mqueue.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(cpu.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(cpu.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(rijndael_simd.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(rijndael_simd.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(rdtables.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(rdtables.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(nbtheory.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(nbtheory.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(asn.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(asn.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(pubkey.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(pubkey.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(iterhash.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(iterhash.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(sha.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(sha.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(gfpcrypt.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(gfpcrypt.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(hmac.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(hmac.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(gf2n.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(gf2n.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(ec2n.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(ec2n.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(ecp.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(ecp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(rng.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(rng.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(osrng.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(osrng.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(sse_simd.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(sse_simd.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(sha_simd.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(sha_simd.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(randpool.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(randpool.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(gf2n_simd.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(gf2n_simd.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+cryptlib.lib(hrtimer.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Source.obj
+cryptlib.lib(hrtimer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MTd_StaticDebug' in Source.obj
+libcpmtd.lib(wlocale.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(xlocale.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(cond.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+Source.obj : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(_tolower.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(mutex.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(locale.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(xlocale.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(xwcsxfrm.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(cond.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(mutex.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(locale.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(wlocale.obj) : error LNK2001: unresolved external symbol _free_dbg
+Source.obj : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(locale0.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(cout.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(cerr.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(xwcsxfrm.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(locale.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(wlocale.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(xlocale.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+Source.obj : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(locale0.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(cout.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(cerr.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libconcrtd.lib(TaskCollection.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libconcrtd.lib(Chores.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(thread0.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(locale.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(wlocale.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(xlocale.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+Source.obj : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(xonce.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(cout.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(cerr.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+Source.obj : error LNK2019: unresolved external symbol "void __cdecl cv::imshow(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class cv::debug_build_guard::_InputArray const &)" (?imshow@cv@@YAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV_InputArray@debug_build_guard@1@@Z) referenced in function "void __cdecl showImage(class cv::Mat)" (?showImage@@YAXVMat@cv@@@Z)
+libcpmtd.lib(_tolower.obj) : error LNK2019: unresolved external symbol _wcsdup_dbg referenced in function _Getctype
+libcpmtd.lib(xstrcoll.obj) : error LNK2001: unresolved external symbol _wcsdup_dbg
+libcpmtd.lib(locale.obj) : error LNK2019: unresolved external symbol _realloc_dbg referenced in function "private: static void __cdecl std::locale::_Locimp::_Locimp_Addfac(class std::locale::_Locimp *,class std::locale::facet *,unsigned __int64)" (?_Locimp_Addfac@_Locimp@locale@std@@CAXPEAV123@PEAVfacet@23@_K@Z)
+libconcrtd.lib(SearchAlgorithms.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(location.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(UMSBackgroundPoller.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(UMSFreeVirtualProcessorRoot.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(FreeVirtualProcessorRoot.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(FreeThreadProxy.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(ThreadProxy.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(UMSFreeThreadProxy.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(TaskCollectionBase.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(WorkQueue.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(Chores.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(VirtualProcessorRoot.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(UMSThreadVirtualProcessor.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(UMSThreadInternalContext.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(TransmogrifiedPrimary.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(Transmogrificator.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(ScheduleGroupBase.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(CacheLocalScheduleGroup.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(FairScheduleGroup.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(ExternalContextBase.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(VirtualProcessor.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(SchedulingNode.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(SubAllocator.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(SchedulingRing.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(SchedulerProxy.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(WinRTWrapper.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(ThreadProxyFactoryManager.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(InternalContextBase.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(TaskCollection.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(SchedulerPolicyBase.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(ExecutionResource.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(HillClimbing.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(UMSWrapper.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(event.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(UMSThreadProxy.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(ContextBase.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(Platform.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(utils.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(ResourceManager.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(SchedulerBase.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libcpmtd.lib(xmbtowc.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(rtlocks.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libconcrtd.lib(SubAllocator.obj) : error LNK2019: unresolved external symbol _CrtIsValidHeapPointer referenced in function "private: bool __cdecl Concurrency::details::SubAllocator::InitAndCheckBlockOnAlloc(union Concurrency::details::AllocationEntry *,unsigned __int64)" (?InitAndCheckBlockOnAlloc@SubAllocator@details@Concurrency@@AEAA_NPEATAllocationEntry@23@_K@Z)
+C:\Users\Samir\Desktop\CryptoProject\x64\Debug\CryptoProject.exe : fatal error LNK1120: 9 unresolved externals
