@@ -1,3 +1,5 @@
+//Created by Samir Abuisneneh
+//Encrypting an image using AES_CBC mode and RC4 random key generation 
 #include "files.h"
 #include "osrng.h"
 #include "cryptlib.h"
@@ -57,20 +59,20 @@ vector<byte> RC4_keyGen(int num) { // generate a specified number of bytes
 
 vector<byte> enc(byte key[AES::MAX_KEYLENGTH], byte iv[AES::BLOCKSIZE], vector<byte> plain) { //encrypt the plain text
 
-	vector<byte> cipher(plain.size()+16);
+	vector<byte> cipher(plain.size()+16); //because cipher adds a padding block
 	CBC_Mode<AES>::Encryption enc;
 	enc.SetKeyWithIV(key, AES::MAX_KEYLENGTH, iv, AES::BLOCKSIZE);
 
 	ArraySink cs(&cipher[0], cipher.size());
 
 	ArraySource(plain.data(), plain.size(), true,
-		new StreamTransformationFilter(enc, new Redirector(cs)));
+		new StreamTransformationFilter(enc, new Redirector(cs))); //Set cipher text length now that its known
 	cipher.resize(cs.TotalPutLength());
 	return cipher;
 }
 
 vector<byte> dec(byte key[AES::MAX_KEYLENGTH], byte iv[AES::BLOCKSIZE], vector<byte> cipher) { // decrypt the cipher
-	vector<byte> recover(cipher.size());
+	vector<byte> recover(cipher.size()); //Recovered text will be less than cipher text
 	CBC_Mode<AES>::Decryption dec;
 	dec.SetKeyWithIV(key, AES::MAX_KEYLENGTH, iv, AES::BLOCKSIZE);
 
@@ -78,7 +80,7 @@ vector<byte> dec(byte key[AES::MAX_KEYLENGTH], byte iv[AES::BLOCKSIZE], vector<b
 
 	ArraySource(cipher.data(), cipher.size(), true,
 		new StreamTransformationFilter(dec, new Redirector(rs)));
-	recover.resize(rs.TotalPutLength());
+	recover.resize(rs.TotalPutLength()); //Set recovered text length now that its known
 	return recover;
 }
 
@@ -126,13 +128,13 @@ void printAll(vector<byte> plain, vector<byte> cipher, vector<byte> recover) {
 	cout << endl << "recover size: " << recover.size() << endl;
 }
 
-void calculateTime(Mat image, double time_ms) {
-	double CPU_speed = 3.6 * pow(10, 9);
-	double ET = image.total()*image.channels() / (time_ms * pow(10, -3));
+void calculateTime(Mat image, double time_ms) { // calculate the ET and the number of cycles per Byte
+	double CPU_speed = 3.6 * pow(10, 9);// depends on machine
+	double ET = image.total()*image.channels() / (time_ms * pow(10, -3));//image.total()*imgae.channels = col*row*3
 	double numOfCycles = CPU_speed / ET;
-	cout << "Time: " << time_ms << endl;
-	cout << "Encryption Throughput: " << ET << endl;
-	cout << "Number of cycles per Byte : " << numOfCycles << endl;
+	cout << "Time: " << time_ms << endl;//time of execution
+	cout << "Encryption Throughput: " << ET << endl;// encryption throughput
+	cout << "Number of cycles per Byte : " << numOfCycles << endl;// number of cycles per Byte
 }
 
 int main(int argc, char* argv[])
@@ -213,29 +215,29 @@ int main(int argc, char* argv[])
 	}
 	for (int i = 0; i < no; i++)
 	{
-		vector<byte> rc4K_D = RC4_keyGen(16);
+		vector<byte> rc4K_D = RC4_keyGen(16);//start of key gen
 		vector<byte> tempCipher;
 		byte key4_D[AES::MAX_KEYLENGTH];
 		memset(key4_D, 0x00, sizeof(key));
 		cout << key4_D;
-		std::copy(rc4K_D.begin(), rc4K_D.end(), key4_D);
+		std::copy(rc4K_D.begin(), rc4K_D.end(), key4_D);//end of key gen
 		for (t; t < j + 128+16; t++)
 		{
-			tempCipher.push_back(cipher[t]);
+			tempCipher.push_back(cipher[t]); //get a cipher block
 		}
-		
 		j = t;
-		vector<byte> decryption = dec(key4_D, newIV, tempCipher);
-		for (int i = 113; i <= 128; i++)
+		vector<byte> decryption = dec(key4_D, newIV, tempCipher);//decrypt the block
+		for (int i = 113; i <= 128; i++)//new iv where iv is the cipher text
+
 		{
 			newIV[i - 113] = tempCipher[i];
 		}
-		recover.insert(recover.end(), decryption.begin(), decryption.end());
+		recover.insert(recover.end(), decryption.begin(), decryption.end());//insert recoverd data into recover
 	}
-	recover.resize(plain.size());
+	recover.resize(plain.size()); // resize the recover to match the plain
 	Mat recoverdimage;
 	recoverdimage = vector2image(recover, image);
-	showImage("recoverd", recoverdimage);
+	showImage("recoverd", recoverdimage); //display recoverd image
 	//calculateTime(image, time);
 	//printAll(plain, cipher, recover);
 	return 0;
