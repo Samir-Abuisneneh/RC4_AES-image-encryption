@@ -57,28 +57,28 @@ vector<byte> RC4_keyGen(int num) { // generate a specified number of bytes
 
 vector<byte> enc(byte key[AES::MAX_KEYLENGTH], byte iv[AES::BLOCKSIZE], vector<byte> plain) { //encrypt the plain text
 
-	vector<byte> cipher(plain.size());
-	CFB_Mode<AES>::Encryption enc;
+	vector<byte> cipher(plain.size()+16);
+	CBC_Mode<AES>::Encryption enc;
 	enc.SetKeyWithIV(key, AES::MAX_KEYLENGTH, iv, AES::BLOCKSIZE);
 
 	ArraySink cs(&cipher[0], cipher.size());
 
 	ArraySource(plain.data(), plain.size(), true,
 		new StreamTransformationFilter(enc, new Redirector(cs)));
-
+	cipher.resize(cs.TotalPutLength());
 	return cipher;
 }
 
 vector<byte> dec(byte key[AES::MAX_KEYLENGTH], byte iv[AES::BLOCKSIZE], vector<byte> cipher) { // decrypt the cipher
 	vector<byte> recover(cipher.size());
-	CFB_Mode<AES>::Decryption dec;
+	CBC_Mode<AES>::Decryption dec;
 	dec.SetKeyWithIV(key, AES::MAX_KEYLENGTH, iv, AES::BLOCKSIZE);
 
 	ArraySink rs(&recover[0], recover.size());
 
 	ArraySource(cipher.data(), cipher.size(), true,
 		new StreamTransformationFilter(dec, new Redirector(rs)));
-
+	recover.resize(rs.TotalPutLength());
 	return recover;
 }
 
@@ -101,29 +101,62 @@ void showImage(string name, Mat image) {
 	cv::namedWindow(name, cv::WINDOW_AUTOSIZE);//create display window
 	cv::imshow(name, image); //show the cipher image
 	cv::waitKey(0); //wait for user input
-	cv::destroyWindow(name); //delete window
 
+}
+
+void printAll(vector<byte> plain, vector<byte> cipher, vector<byte> recover) {
+	cout << "plain  :";
+	for (int i = 0; i < plain.size(); i++)
+	{
+		cout << plain[i];
+	}
+	cout << "\ncipher  :\n";
+	for (int i = 0; i < plain.size(); i++)
+	{
+		cout << cipher[i];
+	}
+	cout << endl << recover.size() << endl;
+	cout << "recovered texts: ";
+	for (int i = 0; i < plain.size(); i++)
+	{
+		cout << recover[i];
+	}
+	cout << endl << "plain size: " << plain.size() << endl;
+	cout << endl << "cipher size: " << cipher.size() << endl;
+	cout << endl << "recover size: " << recover.size() << endl;
+}
+
+void calculateTime(Mat image, double time_ms) {
+	double CPU_speed = 3.6 * pow(10, 9);
+	double ET = image.total()*image.channels() / (time_ms * pow(10, -3));
+	double numOfCycles = CPU_speed / ET;
+	cout << "Time: " << time_ms << endl;
+	cout << "Encryption Throughput: " << ET << endl;
+	cout << "Number of cycles per Byte : " << numOfCycles << endl;
 }
 
 int main(int argc, char* argv[])
 {
-
+	//declartions
 	byte key[AES::MAX_KEYLENGTH];//32
 	byte iv[AES::BLOCKSIZE];//16
+	memset(key, 0x00, sizeof(key));
+	memset(iv, 0x00, sizeof(iv));
+	HexEncoder encoder(new FileSink(cout));
 	RC4_Init(key);
 	vector<byte> plain, cipher, recover;
 	double time = 0;
 	cv::Mat original, image;
+
+	//image to plain text
 	original = cv::imread("blackbuck.bmp", cv::IMREAD_UNCHANGED); //read the image
 	image = original;
-	showImage("opencv", original);
+	showImage("plain", original);
 	plain = image2vector(image);
 	Mat plainImage = vector2image(plain, image);
 	showImage("plain", plainImage);
-	HexEncoder encoder(new FileSink(cout));
-	memset(key, 0x00, sizeof(key)); 
-	memset(iv, 0x00, sizeof(iv));
-	//string str("ls fixsFDSFASDFSDSSDA FDSFASDFSD END MY LIFE VALUVE pls fixs EOF");
+	
+	//string str("ls fixsFDSFASDFSDSSDA  GFDG FD GFDGFDGFD GF HGFHGF HGFTYT g  GFDG FDGFDGFDGFDG DFG FD GFD G FDG FDG FDG FD GFD GFD GFD GFD GFD GFD G RGRE TRE TREL TLRE TLRE LTREL TL REL TR{E TLR{E LT{RE LT{RE LT{R ELT{ REL{ LG{FDLG{R LGE{L F{DGL{R ELG{ LD{G LR{E LG{R LG{DL{R GLD{ LG{FLD {GRL D{GLFD{ GLR{L G{FDLG{ RLD{GL F{DL G{RLD {GL{FDL G{RLD{GL {FLD{ GLR{ LG{RDL{FGLR{DL{GLF{DLGR{LDG{FLGR{DLF{GL{RDL{GFL{DLGR{LDG{FDL{GLF{DFDGFDG GFDGDFGDFDFGGDFDFG GFDGGDFGFDGDFGDFGDF GRTR RGHGF HGF HGF HGF HGF HGF H TRE TREW TRE GFDSGFD SGFD SGF GFDS GFDS GFD SGDFGFDSGFDGfdE RG GE GRE GR EGR EG RE GRE GREGFDFGDGFD GRE GREG RE GRE GFDG FDGFDG RE GR GFD GREFGD RRTY GHHGHGFHG HD GFDGFDG FfdsY LIFE VALUVE GFDGFDG F DGFDGRTRE TRE TR ET RE TRE GFDG FD pls fixs EOF");
 	//std::copy(str.begin(), str.end(), std::back_inserter(plain));
 	int no = plain.size() / 128;
 	if (plain.size() % 128)
@@ -132,41 +165,52 @@ int main(int argc, char* argv[])
 	}
 	int j = 0;
 	int t = 0;
-	for (int i = 0; i < no; i++)
+	byte newIV[AES::BLOCKSIZE];
+	for (int i = 0; i < size(iv); i++)
 	{
-		vector<byte> rc4K_E = RC4_keyGen(16);
+		newIV[i] = iv[i];
+	}
+	for (int i = 0; i < no; i++) //no is the number of iterations (blocks)
+	{
 		vector<byte> tempPlain;
+		vector<byte> rc4K_E = RC4_keyGen(16); // start of key gen
 		byte key4_E[AES::MAX_KEYLENGTH];
 		memset(key4_E, 0x00, sizeof(key));
-		std::copy(rc4K_E.begin(), rc4K_E.end(), key4_E); //convert key vector to array of key so that the encryption algo takes it
+		std::copy(rc4K_E.begin(), rc4K_E.end(), key4_E); //end of key gen
 		for (t; t < j + 128; t++)
 		{
-			tempPlain.push_back(plain[t]);
+			tempPlain.push_back(plain[t]); //get block from plain
 		}
 		j = t;
-		//auto start = chrono::steady_clock::now();	//commented portion is time calculation
-		vector<byte> encryption = enc(key4_E, iv, tempPlain);
-		//auto end = chrono::steady_clock::now();
-		//auto diff = (end - start);
-		//time = time + chrono::duration <double, milli>(diff).count();
-		cipher.insert(cipher.end(), encryption.begin(), encryption.end());
+		auto start = chrono::steady_clock::now();	//commented portion is time calculation
+		vector<byte> encryption = enc(key4_E, newIV, tempPlain);//encryption of block
+		auto end = chrono::steady_clock::now();
+		auto diff = (end - start);
+		time = time + chrono::duration <double, milli>(diff).count();
+		for (int i = 113; i <= 128; i++) // new iv where iv is the cipher text
+		{
+			newIV[i-113] = encryption[i];
+		}
+		cipher.insert(cipher.end(), encryption.begin(), encryption.end()); // insert into cipher
 	}
-	//cout << time << "ms\n";
-
 	
-	cipher.resize(plain.size());
-
+	//cipher.resize(plain.size());
+	vector<byte> man(cipher.size());
+	for (int i = 0; i < cipher.size(); i++)
+	{
+		man[i] = cipher[i];
+	}
 	Mat cipherImage;
 	cipherImage = vector2image(cipher, image);
-	while (cipherImage.empty())
-	{
-		cipherImage = vector2image(cipher, image);
-	}
 	showImage("cipher", cipherImage);
 	j = 0;
 	t = 0;
 	itRC4 = 0;
 	RC4_Init(key);
+	for (int i = 0; i < size(iv); i++)
+	{
+		newIV[i] = iv[i];
+	}
 	for (int i = 0; i < no; i++)
 	{
 		vector<byte> rc4K_D = RC4_keyGen(16);
@@ -175,44 +219,25 @@ int main(int argc, char* argv[])
 		memset(key4_D, 0x00, sizeof(key));
 		cout << key4_D;
 		std::copy(rc4K_D.begin(), rc4K_D.end(), key4_D);
-		for (t; t < j + 128; t++)
+		for (t; t < j + 128+16; t++)
 		{
 			tempCipher.push_back(cipher[t]);
 		}
+		
 		j = t;
-		vector<byte> decryption = dec(key4_D, iv, tempCipher);
+		vector<byte> decryption = dec(key4_D, newIV, tempCipher);
+		for (int i = 113; i <= 128; i++)
+		{
+			newIV[i - 113] = tempCipher[i];
+		}
 		recover.insert(recover.end(), decryption.begin(), decryption.end());
 	}
 	recover.resize(plain.size());
 	Mat recoverdimage;
 	recoverdimage = vector2image(recover, image);
-	while (recoverdimage.empty())
-	{
-		recoverdimage = vector2image(recover, image);
-	}
 	showImage("recoverd", recoverdimage);
-
-
-	//cout << "PLAIN  :";
-	//for (int i = 0; i < plain.size(); i++)
-	//{
-	//    cout << plain[i];
-	//} 
-	//cout << "CIPHER  :\n";
-	//for (int i = 0; i < plain.size(); i++)
-	//{
-	//    cout << cipher[i];
-	//}
-	//cout << endl << recover.size() << endl;
-	//cout << "Recovered texts: ";
-	//for (int i = 0; i < plain.size(); i++)
-	//{
-	//    cout << recover[i];
-	//}
-	//cout << endl << "plain size: " << plain.size() << endl;
-	//cout << endl << "cipher size: " << cipher.size() << endl;
-	//cout << endl <<"recover size: " << recover.size() << endl;
-	//cout << endl;
+	//calculateTime(image, time);
+	//printAll(plain, cipher, recover);
 	return 0;
 }
 
