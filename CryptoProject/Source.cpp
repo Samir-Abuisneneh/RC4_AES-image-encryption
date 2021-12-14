@@ -238,7 +238,7 @@ int main(int argc, char* argv[])
 	Mat recoverdimage;
 	recoverdimage = vector2image(recover, image);
 	showImage("recoverd", recoverdimage); //display recoverd image
-	//calculateTime(image, time);
+	calculateTime(image, time);
 	//printAll(plain, cipher, recover);
 	return 0;
 }
